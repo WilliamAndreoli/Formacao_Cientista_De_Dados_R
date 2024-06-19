@@ -1,0 +1,60 @@
+---
+Exercícios faça você mesmo
+---
+
+```{r}
+#tratar dados 'tempo.csv'
+dados = read.csv("tempo.csv", sep = ";", na.strings="", stringsAsFactors=T)
+head(dados)
+summary(dados)
+```
+```{r}
+#tratando dados categoricos Aparencia
+counts = table(dados$Aparencia)
+barplot(counts, main="Aparencia", xlab="Aparencia")
+summary(dados$Aparencia)
+dados[dados$Aparencia == 'menos',]$Aparencia = "sol"
+summary(dados$Aparencia)
+#remover levels não utilizados
+dados$Aparencia =   factor(dados$Aparencia)
+summary(dados$Aparencia)
+```
+```{r}
+#tratando dados númericos Temperatura
+summary(dados$Temperatura)
+#fora do dominio, numérico - ver temperaturas anormais
+dados[dados$Temperatura< -130 | dados$Temperatura> 130 ,]$Temperatura
+#ver a mediana
+median(dados$Temperatura)
+#subtituição
+dados[dados$Temperatura< -130 | dados$Temperatura> 130 ,]$Temperatura = median(dados$Temperatura)
+
+summary(dados$Temperatura)
+```
+```{r}
+#tratando dados númericos Umidade
+summary(dados$Umidade)
+#fora do dominio, numérico - ver temperaturas anormais
+dados[dados$Umidade< 0 | dados$Umidade> 100 ,]$Umidade
+#ver NA
+dados[is.na(dados$Umidade),]
+#ver mediana
+median(dados$Umidade,na.rm = T)
+#atribuir mediana a NAs
+dados[is.na(dados$Umidade),]$Umidade = median(dados$Umidade,na.rm = T)
+#subtituição
+dados[dados$Umidade< 0 | dados$Umidade> 100 ,]$Umidade = median(dados$Umidade)
+```
+
+```{r}
+#tratar dados categóricos Jogar
+summary(dados$Jogar)
+dados[is.na(dados$Jogar),]
+```
+```{r}
+#tratar Ventos
+summary(dados$Vento)
+dados[is.na(dados$Vento),]
+dados[is.na(dados$Vento),]$Vento = "FALSO"
+```
+
