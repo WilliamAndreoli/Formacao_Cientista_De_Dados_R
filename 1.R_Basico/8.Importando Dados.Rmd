@@ -1,0 +1,23 @@
+---
+Formação Cientista de Dados - Prof. Fernando Amaral
+Importando Dados
+---
+```{r}
+install.packages("openxlsx")
+library(openxlsx)
+```
+Texto
+```{r}
+#texto
+x = read.csv(file.choose(),header = TRUE, sep = ",")
+x
+x = read.csv("Credit.csv",header = TRUE, sep = ",")
+x
+```
+Excel
+```{r}
+dados = read.xlsx("/home/william/Documentos/Desktop/Curso_Cientista_Dados/FormacaoCD/todos os arquivos/5.Pratica em R/dados/Credit.xlsx",sheet= 1)
+dados
+```
+
+
