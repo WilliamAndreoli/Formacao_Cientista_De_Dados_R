@@ -1,0 +1,18 @@
+---
+Exercicio Visualização Gŕaficos E Dashboards
+---
+1. Arquivo dados.csv
+1 Código 
+2 Municipio
+3 PIB
+4 VALOREMPENHO
+```{r}
+dados = read.csv("dados.csv", sep = ";", na.strings="", stringsAsFactors=T)
+dados
+```
+Empenho em diárias em munícipios gaúchos e PIB do municipio
+
+```{r}
+barplot(dados$PIB)
+```
+Execute um processo de Análise de Dados Exploratória para conhecimento/Entendimento destes dados
